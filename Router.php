@@ -32,11 +32,11 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
 
         if ($method === 'GET') {
-            $urlActual = explode('?',$currentUrl)[0];
-            $fn = $this->rutasGET[$urlActual] ?? null;
+            $currentUrl = strtolower(explode('?',$currentUrl)[0]);
+            $fn = $this->getRoutes[$currentUrl] ?? null;
         } else {
-            $urlActual = explode('?',$currentUrl)[0];
-            $fn = $this->rutasPOST[$urlActual] ?? null;
+            $currentUrl = strtolower(explode('?',$currentUrl))[0];
+            $fn = $this->postRoutes[$currentUrl] ?? null;
         }
 
 
